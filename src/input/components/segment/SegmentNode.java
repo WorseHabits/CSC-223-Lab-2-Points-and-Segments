@@ -18,7 +18,6 @@ public class SegmentNode
 		_point1 = pt1;
 		_point2 = pt2;
 		
-		//hello
 	}
 
 	public boolean equals(SegmentNode that){
