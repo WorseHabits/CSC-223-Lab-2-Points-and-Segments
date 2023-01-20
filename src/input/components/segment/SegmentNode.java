@@ -20,9 +20,17 @@ public class SegmentNode
 		
 	}
 
-	public boolean equals(SegmentNode that){
+	public boolean equals(Object o){
 		
-		return (_point1.equals(that._point1) && _point2.equals(that._point2));
+		if(o instanceof SegmentNode) {
+			
+			SegmentNode segment = (SegmentNode) o;
+			
+			return (_point1.equals(segment._point1) && _point2.equals(segment._point2));
+			
+		}
+		
+		return false;
 		
 	}
 }

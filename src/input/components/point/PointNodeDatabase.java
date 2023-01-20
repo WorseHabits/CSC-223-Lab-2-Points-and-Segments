@@ -1,4 +1,4 @@
-package point;
+package input.components.point;
 
 public class PointNodeDatabase {
 

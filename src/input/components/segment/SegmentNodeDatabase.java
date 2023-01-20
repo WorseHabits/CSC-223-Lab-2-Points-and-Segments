@@ -1,4 +1,4 @@
-package segment;
+package input.components.segment;
 
 public class SegmentNodeDatabase {
 

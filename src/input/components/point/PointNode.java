@@ -47,18 +47,26 @@ public class PointNode
 		return Double.valueOf(_x).hashCode() + Double.valueOf(_y).hashCode();
 	}
 
-	public boolean equals(PointNode that){
+	public boolean equals(Object o){
 		
-		Double thisX = MathUtilities.removeLessEpsilon(_x);
 		
-		Double thatX = MathUtilities.removeLessEpsilon(that._x);
+		if(o instanceof PointNode) {
+			
+			PointNode node = (PointNode) o;
+			
+			Double thisX = MathUtilities.removeLessEpsilon(_x);
+			
+			Double thatX = MathUtilities.removeLessEpsilon(node._x);
+			
+			Double thisY = MathUtilities.removeLessEpsilon(_y);
+			
+			Double thatY = MathUtilities.removeLessEpsilon(node._y);
+			
+			return MathUtilities.doubleEquals(thisX, thatX) && MathUtilities.doubleEquals(thisY, thatY);
+			
+		}
 		
-		Double thisY = MathUtilities.removeLessEpsilon(_y);
-		
-		Double thatY = MathUtilities.removeLessEpsilon(that._y);
-		
-		return MathUtilities.doubleEquals(thisX, thatX) && MathUtilities.doubleEquals(thisY, thatY);
-		
+		return false;
 		
 	}
 
