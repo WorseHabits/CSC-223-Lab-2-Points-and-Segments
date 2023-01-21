@@ -50,7 +50,7 @@ public class PointNode
 	public boolean equals(Object o){
 		
 		
-		if(o instanceof PointNode) {
+		if(o instanceof PointNode && o != null) {
 			
 			PointNode node = (PointNode) o;
 			

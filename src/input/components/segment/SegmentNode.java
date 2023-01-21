@@ -22,7 +22,7 @@ public class SegmentNode
 
 	public boolean equals(Object o){
 		
-		if(o instanceof SegmentNode) {
+		if(o instanceof SegmentNode && o != null) {
 			
 			SegmentNode segment = (SegmentNode) o;
 			

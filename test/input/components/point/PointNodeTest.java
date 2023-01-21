@@ -28,5 +28,17 @@ class PointNodeTest {
 				equals(new PointNode(Math.sqrt(Math.PI), Math.sqrt(Math.PI))));
 		
 	}
+	
+	@Test
+	void equalsIncorrectDatatypeTest() {
+		
+		assertFalse(new PointNode(Math.sqrt(10), Math.sqrt(11)).
+				equals(new Integer(3)));
+		
+		
+		assertFalse(new PointNode(Math.sqrt(10), Math.sqrt(11)).
+				equals(null));
+		
+	}
 
 }
