@@ -40,12 +40,12 @@ public class SegmentNodeDatabase {
 	}
 	
 	public void addUndirectedEdge(PointNode a, PointNode b) {
-		// if the list doesn't contain point a
+		// if the map doesn't contain point a
 		// add it with only b in its adjacency list
 		if (!_adjLists.containsKey(a)) {
 			_adjLists.put(a, new HashSet<PointNode>(Arrays.asList(b)));
 		}
-		// if the list contains point a
+		// if the map contains point a
 		// check to see if b is in its adjacency list
 		// if not, add b to its adjacency list
 		else if (_adjLists.containsKey(a)) {
@@ -55,12 +55,12 @@ public class SegmentNodeDatabase {
 				_adjLists.put(a, aADJ);
 			}
 		}
-		// if the list doesn't contain point b
+		// if the map doesn't contain point b
 		// add it with only a in its adjacency list
 		if (!_adjLists.containsKey(b)) {
 			_adjLists.put(b, new HashSet<PointNode>(Arrays.asList(a)));
 		}
-		// if the list contains point b
+		// if the map contains point b
 		// check to see if a is in its adjacency list
 		// if not, add a to its adjacency list
 		else if (_adjLists.containsKey(b)) {
