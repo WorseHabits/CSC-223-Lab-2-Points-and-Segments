@@ -1,6 +1,8 @@
 package input.components.segment;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -30,6 +32,7 @@ public class SegmentNodeDatabase {
 		return total / 2;
 	}
 	
+	// idk what the - means in the lab instructions
 	public void addDirectedEdge(PointNode a, PointNode b) {
 		
 	}
@@ -62,12 +65,26 @@ public class SegmentNodeDatabase {
 		// if the adjacency map already contains both points, you shouldn't do anything
 	}
 	
+	// converts the passed-in list to a set and adds it to the map
+	// idk what you're supposed to do if the point is already in the map
 	public void addAjacencyList(PointNode point, List<PointNode> adjList) {
-		
+		Set<PointNode> adjSet = new HashSet<PointNode>();
+		adjSet.addAll(adjList);
+		_adjLists.put(point, adjSet);
 	}
 	
+	// creates a list
+	// adds each segment as the pair of each PointNode and each PointNode in its adjacency list
+	// that means it would be a list of double the segments because each segment is repeated forwards and backwards
+	// ie has Segment from A to B as both A to B and B to A
 	public List<SegmentNode> asSegmentList() {
-		return null;
+		List<SegmentNode> segments = new ArrayList<SegmentNode>();
+		for (Entry<PointNode, Set<PointNode>> entry : _adjLists.entrySet()) { 
+			for (PointNode p : entry.getValue()) {
+				segments.add(new SegmentNode(entry.getKey(),p));
+			}
+		}
+		return segments;
 	}
 	
 	public List<SegmentNode> asUniqueSegmentList() {
