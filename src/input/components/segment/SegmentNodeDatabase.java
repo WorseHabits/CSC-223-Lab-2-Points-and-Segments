@@ -93,9 +93,15 @@ public class SegmentNodeDatabase {
 			_adjLists.put(point, adjSet);
 		}
 		// check to see if the points in the adjacency list are in the map
+		// if so, check to see if the point is already in their adjacency list and if so, add it
 		// if not, add them and point as the only point in their adjacency list
 		for (PointNode adjacency : adjList) {
-			if (!_adjLists.containsKey(adjacency)) {
+			if (_adjLists.containsKey(adjacency)) {
+				Set<PointNode> adjacencyADJ = new HashSet<PointNode>(_adjLists.get(adjacency));
+				adjacencyADJ.add(point);
+				_adjLists.put(adjacency, adjacencyADJ);
+			}
+			else if (!_adjLists.containsKey(adjacency)) {
 				_adjLists.put(adjacency, new HashSet<PointNode>(Arrays.asList(point)));
 			}
 		}
