@@ -40,40 +40,30 @@ public class SegmentNodeDatabase {
 	}
 	
 	public void addUndirectedEdge(PointNode a, PointNode b) {
-		// if the adjacency map doesn't have either point, you have to put both in
-		// their adjacency lists only contain each other
-		if (!_adjLists.containsKey(a) && !_adjLists.containsKey(b)) {
+		// if the list doesn't contain point a
+		// add it with only b in its adjacency list
+		if (!_adjLists.containsKey(a)) {
 			_adjLists.put(a, new HashSet<PointNode>(Arrays.asList(b)));
-			_adjLists.put(b, new HashSet<PointNode>(Arrays.asList(a)));
 		}
-		// if it contains the first point but not the second
-		// you need to add the second point to the adjacency list for the first point
-		// and add the second point to the map
-		else if (_adjLists.containsKey(a) && !_adjLists.containsKey(b)) {
-			Set<PointNode> aADJ = new HashSet<PointNode>(_adjLists.get(a));
-			aADJ.add(b);
-			_adjLists.put(a, aADJ);
-			_adjLists.put(b, new HashSet<PointNode>(Arrays.asList(a)));
-		}
-		// if it contains the second point but not the first
-		// you need to add the first point to the map
-		// and add the first point to the adjacency list for the second point
-		else if (!_adjLists.containsKey(a) && _adjLists.containsKey(b)) {
-			_adjLists.put(a, new HashSet<PointNode>(Arrays.asList(b)));
-			Set<PointNode> bADJ = new HashSet<PointNode>(_adjLists.get(b));
-			bADJ.add(a);
-			_adjLists.put(b, bADJ);
-		}
-		// if the adjacency map already contains both points
-		// you need to check if they are already in each other adjacency lists
-		// if so, do nothing
-		// if not, add them
-		if (_adjLists.containsKey(a) && _adjLists.containsKey(b)) {
+		// if the list contains point a
+		// check to see if b is in its adjacency list
+		// if not, add b to its adjacency list
+		else if (_adjLists.containsKey(a)) {
 			if (!_adjLists.get(a).contains(b)) {
 				Set<PointNode> aADJ = new HashSet<PointNode>(_adjLists.get(a));
 				aADJ.add(b);
 				_adjLists.put(a, aADJ);
 			}
+		}
+		// if the list doesn't contain point b
+		// add it with only a in its adjacency list
+		if (!_adjLists.containsKey(b)) {
+			_adjLists.put(b, new HashSet<PointNode>(Arrays.asList(a)));
+		}
+		// if the list contains point b
+		// check to see if a is in its adjacency list
+		// if not, add a to its adjacency list
+		else if (_adjLists.containsKey(b)) {
 			if (!_adjLists.get(b).contains(a)) {
 				Set<PointNode> bADJ = new HashSet<PointNode>(_adjLists.get(b));
 				bADJ.add(a);
