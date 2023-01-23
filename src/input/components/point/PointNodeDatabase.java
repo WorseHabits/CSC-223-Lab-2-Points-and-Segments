@@ -60,7 +60,7 @@ public class PointNodeDatabase {
 		}
 		return null;
 	}
-	
+
 	public PointNode getPoint(double x, double y)
 	{
 		for (PointNode point:_points)
