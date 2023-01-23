@@ -177,9 +177,27 @@ public class SegmentNodeDatabase {
 
 	}
 	
+	// creates a list
+	// if a segment's reverse is not already in the list, add each segment to  the list
 	public List<SegmentNode> asUniqueSegmentList() {
 		
-		return null;
+		List<SegmentNode> segments = new ArrayList<SegmentNode>();
+		
+		for (Entry<PointNode, Set<PointNode>> entry : _adjLists.entrySet()) { 
+			
+			for (PointNode p : entry.getValue()) {
+				
+				if (!segments.contains(new SegmentNode(p, entry.getKey()))) {
+				
+					segments.add(new SegmentNode(entry.getKey(),p));
+				
+				}
+				
+			}
+			
+		}
+		
+		return segments;
 		
 	}
 	
