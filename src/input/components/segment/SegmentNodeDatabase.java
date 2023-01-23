@@ -200,13 +200,6 @@ public class SegmentNodeDatabase {
 			
 		}
 		
-		for (SegmentNode segment : segments) {
-			
-			System.out.println(segment._point1.toString() + " " + segment._point2.toString());
-		
-		}
-		
-		
 		return segments;
 		
 	}
