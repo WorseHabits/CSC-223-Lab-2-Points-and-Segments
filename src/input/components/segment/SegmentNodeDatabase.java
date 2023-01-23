@@ -182,12 +182,15 @@ public class SegmentNodeDatabase {
 	public List<SegmentNode> asUniqueSegmentList() {
 		
 		List<SegmentNode> segments = new ArrayList<SegmentNode>();
+		List<PointNode> keys = new ArrayList<PointNode>();
 		
 		for (Entry<PointNode, Set<PointNode>> entry : _adjLists.entrySet()) { 
 			
+			keys.add(entry.getKey());
+			
 			for (PointNode p : entry.getValue()) {
 				
-				if (!segments.contains(new SegmentNode(p, entry.getKey()))) {
+				if (!keys.contains(p)) {
 				
 					segments.add(new SegmentNode(entry.getKey(),p));
 				
@@ -196,6 +199,13 @@ public class SegmentNodeDatabase {
 			}
 			
 		}
+		
+		for (SegmentNode segment : segments) {
+			
+			System.out.println(segment._point1.toString() + " " + segment._point2.toString());
+		
+		}
+		
 		
 		return segments;
 		
