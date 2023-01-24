@@ -43,7 +43,7 @@ class SegmentNodeDatabaseTest
     	
     	return db;
     }
-
+ 
 	@Test
 	void testNumUndirectedEdges()
 	{
