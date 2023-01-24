@@ -47,9 +47,17 @@ class SegmentNodeDatabaseTest
 	@Test
 	void testNumUndirectedEdges()
 	{
+		// makes sure the built database correctly has and says it has 10 segments
 		SegmentNodeDatabase db = build();
 		
 		assertEquals(10, db.numUndirectedEdges());
+		
+		// makes sure it the number doesn't increase when adding repeats
+		PointNode a = new PointNode("A", 3, 6);
+    	PointNode b = new PointNode("B", 2, 4);
+    	db.addUndirectedEdge(a, b);
+    	db.addUndirectedEdge(b, a);
+    	assertEquals(10, db.numUndirectedEdges());
 	}
 	
 	@Test
