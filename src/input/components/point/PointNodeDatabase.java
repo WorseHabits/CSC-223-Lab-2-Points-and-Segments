@@ -5,16 +5,17 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class PointNodeDatabase {
-	private Set<PointNode> _points;
+	Set<PointNode> _points;
 	
 	public PointNodeDatabase() 
 	{
 		_points = new LinkedHashSet<PointNode>();
 	}
 	
-	public PointNodeDatabase(List<PointNode> points)
+	public PointNodeDatabase(List<PointNode> points) 
 	{
-		_points = new LinkedHashSet<PointNode>(points);
+	    if(points == null) {_points = new LinkedHashSet<PointNode>();} 
+	    else {_points = new LinkedHashSet<PointNode>(points);}
 	}
 	
 	public void put(PointNode point)
@@ -60,7 +61,7 @@ public class PointNodeDatabase {
 		}
 		return null;
 	}
-	
+
 	public PointNode getPoint(double x, double y)
 	{
 		for (PointNode point:_points)
@@ -70,5 +71,6 @@ public class PointNodeDatabase {
 		}
 		return null;
 	}
+	
 	
 }
