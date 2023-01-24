@@ -54,6 +54,8 @@ class SegmentNodeDatabaseTest
 	
 	@Test
 	void testAddAdjacencyList() {
+		// makes an adjacency list for a new point
+		// the list encompasses a new point and two points already in the map
 		SegmentNodeDatabase db = build();
 		
 		PointNode f = new PointNode("F", 6, 6);
@@ -67,6 +69,8 @@ class SegmentNodeDatabaseTest
 	
 	@Test
 	void testAsSegmentList() {
+		// the segment list has each segment twice: forwards and backwards
+		// so the list's size should be double (20) the amount of undirected edges in the map (10)
 		SegmentNodeDatabase db = build();
 		
 		assertEquals(20, db.asSegmentList().size());
@@ -74,6 +78,8 @@ class SegmentNodeDatabaseTest
 	
 	@Test
 	void testAsUniqueSegmentList() {
+		// the segment list has each segment once
+		// so the list's size should be the amount of undirected edges in the map (10)
 		SegmentNodeDatabase db = build();
 		
 		assertEquals(10, db.asUniqueSegmentList().size());
